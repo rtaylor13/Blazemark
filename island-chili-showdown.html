@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Island Chili Showdown™</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700&family=Merriweather:ital@1&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --chili-red:    #C0392B;
+    --chili-dark:   #7B1A10;
+    --flame-orange: #E8621A;
+    --sun-yellow:   #F5C518;
+    --ocean-teal:   #1A6B72;
+    --sand:         #F7F0E3;
+    --dark-text:    #1C1C1C;
+    --mid-text:     #444;
+    --light-line:   #D9CFC0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--sand);
+    color: var(--dark-text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--chili-dark);
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    height: 56px;
+    border-bottom: 3px solid var(--sun-yellow);
+  }
+  nav .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--sun-yellow);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  nav ul {
+    list-style: none;
+    display: flex; gap: 1.5rem;
+  }
+  nav ul a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  nav ul a:hover { color: var(--sun-yellow); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, var(--chili-dark) 0%, #2C0E07 60%, var(--ocean-teal) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 110%, rgba(232,98,26,0.35) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sun-yellow);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 span { color: var(--sun-yellow); }
+  .hero-subtitle {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.25rem;
+    max-width: 520px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.12s, opacity 0.12s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn:hover { transform: translateY(-2px); opacity: 0.92; }
+  .btn-primary { background: var(--chili-red); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid var(--sun-yellow); }
+  .btn-outline:hover { background: var(--sun-yellow); color: var(--dark-text); }
+
+  /* flame row */
+  .flames {
+    display: flex; justify-content: center; gap: 0.5rem;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    opacity: 0.6;
+  }
+
+  /* ── WHEN & WHERE ── */
+  .when-where {
+    background: var(--chili-red);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .when-where-grid {
+    display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+    max-width: 720px; margin: 0 auto;
+  }
+  .ww-item { flex: 1; min-width: 200px; }
+  .ww-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sun-yellow);
+    margin-bottom: 0.25rem;
+  }
+  .ww-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+  .ww-sub { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding: 4rem 1.5rem; }
+  .inner { max-width: 900px; margin: 0 auto; }
+  .section-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 0.06em;
+    color: var(--chili-dark);
+    margin-bottom: 0.25rem;
+  }
+  .section-rule {
+    width: 56px; height: 4px;
+    background: var(--flame-orange);
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--mid-text);
+    max-width: 640px;
+    margin-bottom: 2rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-callout {
+    background: var(--chili-dark);
+    color: #fff;
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+  }
+  .about-callout .big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: var(--sun-yellow);
+    line-height: 1;
+  }
+  .about-callout p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 0.5rem; }
+
+  /* ── SCHEDULE ── */
+  .schedule-bg { background: #fff; }
+  .timeline {
+    border-left: 3px solid var(--light-line);
+    padding-left: 1.5rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .timeline-item { position: relative; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.85rem; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--flame-orange);
+    border: 2px solid #fff;
+    outline: 2px solid var(--flame-orange);
+  }
+  .t-time {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--chili-red);
+    margin-bottom: 2px;
+  }
+  .t-event { font-weight: 700; font-size: 1rem; color: var(--dark-text); }
+  .t-desc { font-size: 0.9rem; color: var(--mid-text); }
+
+  /* ── DONATE TIERS ── */
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .tier-card {
+    border: 1.5px solid var(--light-line);
+    border-radius: 6px;
+    padding: 1.25rem;
+    text-align: center;
+    background: #fff;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .tier-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .tier-emoji { font-size: 2.25rem; margin-bottom: 0.5rem; }
+  .tier-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--chili-dark);
+    letter-spacing: 0.06em;
+  }
+  .tier-amount { font-size: 0.9rem; color: var(--mid-text); }
+  .tier-card.featured {
+    border-color: var(--chili-red);
+    background: var(--chili-red);
+    color: #fff;
+  }
+  .tier-card.featured .tier-name { color: var(--sun-yellow); }
+  .tier-card.featured .tier-amount { color: rgba(255,255,255,0.85); }
+
+  /* ── COOK RULES ── */
+  .rules-list {
+    display: flex; flex-direction: column; gap: 0.75rem;
+    counter-reset: rule-counter;
+    list-style: none;
+  }
+  .rules-list li {
+    counter-increment: rule-counter;
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: #fff;
+    border-radius: 4px;
+    padding: 0.9rem 1rem;
+    border: 0.5px solid var(--light-line);
+  }
+  .rules-list li::before {
+    content: counter(rule-counter, decimal-leading-zero);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--flame-orange);
+    min-width: 32px;
+    line-height: 1.2;
+  }
+
+  /* ── SPONSORS ── */
+  .sponsors-bg { background: var(--chili-dark); color: #fff; }
+  .sponsor-grid {
+    display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .sponsor-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .sponsors-bg .section-heading { color: var(--sun-yellow); }
+
+  /* ── BENEFICIARY BANNER ── */
+  .benefit-bar {
+    background: var(--ocean-teal);
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .benefit-bar h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+  .benefit-bar p { font-size: 0.95rem; color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto 1.25rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--sun-yellow); text-decoration: none; }
+  footer .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">🌶 Island Chili Showdown™</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#register">Register</a></li>
+    <li><a href="#donate">Donate</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Corpus Christi, Texas · Padre Island</p>
+  <h1>The Island<br><span>Chili</span><br>Showdown<span style="font-size:0.55em;">™</span></h1>
+  <p class="hero-subtitle">Eating chili, saving turtles — come cook, compete, and support the Texas Sealife Center.</p>
+  <div class="hero-ctas">
+    <a href="#register" class="btn btn-primary">Register a Team</a>
+    <a href="#donate" class="btn btn-outline">Donate Now</a>
+  </div>
+  <div class="flames">🌶 🔥 🐢 🔥 🌶</div>
+</section>
+
+<!-- WHEN & WHERE -->
+<div class="when-where">
+  <div class="when-where-grid">
+    <div class="ww-item">
+      <div class="ww-label">Date</div>
+      <div class="ww-value">November 2025</div>
+      <div class="ww-sub">11:00 AM – 3:00 PM</div>
+    </div>
+    <div class="ww-item">
+      <div class="ww-label">Location</div>
+      <div class="ww-value">Texas Sealife Center</div>
+      <div class="ww-sub">14220 S. Padre Island Dr, Corpus Christi, TX 78418</div>
+    </div>
+    <div class="ww-item">
+      <div class="ww-label">What to expect</div>
+      <div class="ww-value">Chili. Competition. Community.</div>
+      <div class="ww-sub">In the parking lot next to the Sealife Center</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div>
+        <p class="section-heading">About the Showdown</p>
+        <div class="section-rule"></div>
+        <p class="section-lead">
+          The Island Chili Showdown is an annual cook-off and community fundraiser held on Padre Island in Corpus Christi, Texas. Teams compete for glory, bragging rights, and the love of great chili — all while raising critical funds for the Texas Sealife Center.
+        </p>
+        <p style="color:var(--mid-text); font-size:0.95rem;">
+          The Texas Sealife Center is a nonprofit dedicated to the rescue, rehabilitation, and release of coastal and aquatic wildlife in South Texas — including endangered sea turtles. Every bowl you taste and every dollar you donate helps more animals make it back to the ocean.
+        </p>
+      </div>
+      <div class="about-callout">
+        <div class="big-num">🐢</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--sun-yellow); letter-spacing:0.05em;">Saving Sea Turtles</div>
+        <p>100% of proceeds benefit the Texas Sealife Center's wildlife rescue operations on the Gulf Coast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section schedule-bg" id="schedule">
+  <div class="inner">
+    <p class="section-heading">Schedule of Events</p>
+    <div class="section-rule"></div>
+    <p class="section-lead">Here's what the day looks like. Come early, stay late, eat lots of chili.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="t-time">9:00 AM</div>
+        <div class="t-event">Cook Team Check-In &amp; Setup</div>
+        <div class="t-desc">Teams arrive, pick their spot in the lot, and get their equipment fired up.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">10:00 AM</div>
+        <div class="t-event">Cooking Begins</div>
+        <div class="t-desc">Officially, the burners are lit. No pre-made chili allowed — everything starts here.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">11:00 AM</div>
+        <div class="t-event">Gates Open to the Public</div>
+        <div class="t-desc">Tasters, supporters, and families are welcome. Donations encouraged at the gate.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">12:30 PM</div>
+        <div class="t-event">Judging Begins</div>
+        <div class="t-desc">Official judges make the rounds. Score sheets cover flavor, heat, consistency, and creativity.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">2:30 PM</div>
+        <div class="t-event">Awards Ceremony</div>
+        <div class="t-desc">Winners announced! Trophies, bragging rights, and a whole lot of chili glory.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">3:00 PM</div>
+        <div class="t-event">Event Closes</div>
+        <div class="t-desc">Thanks for coming. See you next year — same island, more chili.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section class="section" id="register">
+  <div class="inner">
+    <p class="section-heading">Register a Cook Team</p>
+    <div class="section-rule"></div>
+    <p class="section-lead">Entry fee is <strong>$25 per team</strong> (up to 4 people). All fees go directly to the Texas Sealife Center.</p>
+    <ul class="rules-list">
+      <li>Teams may have up to 4 members. Only one entry per team.</li>
+      <li>All chili must be prepared on-site on the day of the event — no pre-cooking.</li>
+      <li>Each team is responsible for their own equipment, fuel, ingredients, and setup.</li>
+      <li>Chili recipes can be any style: Texas Red, verde, white, vegetarian — get creative.</li>
+      <li>A minimum of one quart of chili must be available for judging and public tasting.</li>
+      <li>Teams must keep their area clean and follow all venue safety guidelines.</li>
+      <li>Team names must be family-friendly (this is a community and wildlife event!).</li>
+    </ul>
+    <div style="margin-top:2rem;">
+      <a href="mailto:info@theislandchilishowdown.com" class="btn btn-primary">Register via Email</a>
+      <span style="margin-left:1rem; font-size:0.85rem; color:var(--mid-text);">Or use PayPal: <strong>@islandchilishowdown</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section class="section schedule-bg" id="donate">
+  <div class="inner">
+    <p class="section-heading">Donate &amp; Support</p>
+    <div class="section-rule"></div>
+    <p class="section-lead">Not cooking? You can still make a difference. Choose the sea turtle that matches your generosity.</p>
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-emoji">🐢</div>
+        <div class="tier-name">Kemps Ridley</div>
+        <div class="tier-amount">$10 minimum</div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-emoji">🐢</div>
+        <div class="tier-name">Loggerhead</div>
+        <div class="tier-amount">$20 minimum</div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-emoji">🐢</div>
+        <div class="tier-name">Green</div>
+        <div class="tier-amount">$50 minimum</div>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-emoji">🐢</div>
+        <div class="tier-name">Leatherback</div>
+        <div class="tier-amount">$100 minimum</div>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--mid-text);">
+      Vendor donations: minimum $100. Send donations directly via PayPal to <strong>@islandchilishowdown</strong>.<br>
+      Partner: <strong>4TunaEstates</strong>.
+    </p>
+    <div style="margin-top:1.25rem;">
+      <a href="https://paypal.me/islandchilishowdown" class="btn btn-primary" target="_blank" rel="noopener">Donate via PayPal</a>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section class="section sponsors-bg" id="sponsors">
+  <div class="inner" style="text-align:center;">
+    <p class="section-heading">Our Sponsors</p>
+    <div class="section-rule" style="margin-left:auto;margin-right:auto;"></div>
+    <p style="color:rgba(255,255,255,0.75); margin-bottom:0.5rem;">We couldn't do this without the generous support of our community sponsors.</p>
+    <div class="sponsor-grid">
+      <div class="sponsor-pill">4TunaEstates</div>
+      <div class="sponsor-pill">Texas Sealife Center</div>
+      <div class="sponsor-pill">Padre Island Parrot Heads</div>
+      <div class="sponsor-pill">Your Logo Here</div>
+      <div class="sponsor-pill">Your Logo Here</div>
+    </div>
+    <p style="margin-top:2rem; font-size:0.9rem; color:rgba(255,255,255,0.55);">
+      Interested in sponsoring? <a href="mailto:info@theislandchilishowdown.com" style="color:var(--sun-yellow);">Get in touch →</a>
+    </p>
+  </div>
+</section>
+
+<!-- BENEFICIARY BANNER -->
+<div class="benefit-bar">
+  <h2>🐢 Benefiting the Texas Sealife Center</h2>
+  <p>A nonprofit 501(c)3 dedicated to the rescue, rehabilitation, and release of coastal and aquatic wildlife in South Texas.</p>
+  <a href="https://www.texassealifecenter.org" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:0.85rem;">Visit Texas Sealife Center ↗</a>
+</div>
+
+<!-- GALLERY CALLOUT -->
+<section class="section" style="text-align:center; background:var(--sand);">
+  <div class="inner">
+    <p class="section-heading">2024 Showdown Gallery</p>
+    <div class="section-rule" style="margin:0 auto 1.25rem;"></div>
+    <p class="section-lead" style="margin-left:auto;margin-right:auto;text-align:center;">
+      Check out photos from last year's "Eating Chili, Saving Turtles" showdown.
+    </p>
+    <a href="https://theislandchilishowdown.com" target="_blank" rel="noopener" class="btn btn-primary">View the 2024 Gallery ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The Island Chili Showdown™</div>
+  <p>14220 S. Padre Island Dr, Corpus Christi, TX 78418</p>
+  <p style="margin-top:0.5rem;">
+    <a href="mailto:info@theislandchilishowdown.com">info@theislandchilishowdown.com</a>
+    &nbsp;·&nbsp;
+    PayPal: <a href="#">@islandchilishowdown</a>
+  </p>
+  <p style="margin-top:1rem;">© 2025 The Island Chili Showdown™ · All rights reserved</p>
+</footer>
+
+</body>
+</html>
