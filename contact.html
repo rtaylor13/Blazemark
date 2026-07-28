@@ -362,14 +362,23 @@
   <p style="margin-top:1rem;">© 2026 Blazemark Technology Consulting · All rights reserved</p>
 </footer>
 
+<!-- Supabase client (loaded from CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-  // Front-end only form handling. Wire this up to Supabase (or any backend)
-  // by replacing the code inside the submit handler below.
+  // ── SUPABASE CONFIG ──────────────────────────────────────────────
+  // Replace these two values with your own project's credentials.
+  // Find them in the Supabase dashboard under Project Settings > API.
+  // The "anon public" key is safe to use in client-side code like this.
+  const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
+  const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
+
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
   const form = document.getElementById('blazemark-contact-form');
   const statusEl = document.getElementById('form-status');
   const submitBtn = document.getElementById('submit-btn');
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     submitBtn.disabled = true;
@@ -382,21 +391,27 @@
       email: form.email.value.trim(),
       company: form.company.value.trim(),
       service: form.service.value,
-      message: form.message.value.trim(),
-      submitted_at: new Date().toISOString()
+      message: form.message.value.trim()
     };
 
-    // TODO: replace this block with your Supabase insert, e.g.
-    // const { error } = await supabase.from('contact_submissions').insert([data]);
-    console.log('Contact form submission:', data);
+    try {
+      const { error } = await supabaseClient
+        .from('contact_submissions')
+        .insert([data]);
 
-    setTimeout(function () {
+      if (error) throw error;
+
       statusEl.textContent = "Thanks — we'll be in touch within one business day.";
       statusEl.className = 'form-status success';
+      form.reset();
+    } catch (err) {
+      console.error('Error submitting contact form:', err);
+      statusEl.textContent = 'Something went wrong sending your message. Please email us directly at blazemarkconsulting@gmail.com.';
+      statusEl.className = 'form-status error';
+    } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Message';
-      form.reset();
-    }, 500);
+    }
   });
 </script>
 
