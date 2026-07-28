@@ -362,8 +362,9 @@
   <p style="margin-top:1rem;">© 2026 Blazemark Technology Consulting · All rights reserved</p>
 </footer>
 
-<!-- Supabase client (loaded from CDN) -->
+<!-- Supabase client + EmailJS (loaded from CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   // ── SUPABASE CONFIG ──────────────────────────────────────────────
   // Replace these two values with your own project's credentials.
@@ -382,6 +383,8 @@
   const EMAILJS_SERVICE_ID = 'service_ymainxe';
   const EMAILJS_NOTIFY_TEMPLATE_ID = 'template_a0bv3us';
   const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_rdvogb9';
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -405,6 +408,12 @@
         .insert([data]);
 
       if (error) throw error;
+
+      // Notify Blazemark of the new lead
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_NOTIFY_TEMPLATE_ID, data);
+
+      // Auto-reply confirmation sent to the visitor's own email address
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID, data);
 
       statusEl.textContent = "Thanks — we'll be in touch within one business day.";
       statusEl.className = 'form-status success';
