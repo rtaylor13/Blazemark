@@ -23,6 +23,7 @@
   }
 
   html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 64px; }
 
   body {
     font-family: 'Lato', sans-serif;
@@ -62,6 +63,43 @@
     transition: color 0.15s;
   }
   nav ul a:hover { color: var(--sun-yellow); }
+  .nav-toggle {
+    display: none;
+    background: none; border: 0; cursor: pointer;
+    width: 44px; height: 44px;
+    margin-right: -0.5rem;
+    align-items: center; justify-content: center;
+  }
+  .nav-toggle span,
+  .nav-toggle span::before,
+  .nav-toggle span::after {
+    display: block; position: relative;
+    width: 24px; height: 2px;
+    background: #fff; border-radius: 2px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .nav-toggle span::before,
+  .nav-toggle span::after { content: ''; position: absolute; left: 0; }
+  .nav-toggle span::before { top: -7px; }
+  .nav-toggle span::after  { top: 7px; }
+  nav.open .nav-toggle span { background: transparent; }
+  nav.open .nav-toggle span::before { transform: translateY(7px) rotate(45deg); }
+  nav.open .nav-toggle span::after  { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 760px) {
+    nav { padding: 0 1rem; }
+    .nav-toggle { display: flex; }
+    nav ul {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 0;
+      background: var(--chili-dark);
+      border-bottom: 3px solid var(--sun-yellow);
+      padding: 0.5rem 0;
+    }
+    nav.open ul { display: flex; }
+    nav ul a { display: block; padding: 0.8rem 1.25rem; font-size: 0.95rem; }
+  }
 
   /* ── HERO ── */
   .hero {
@@ -350,6 +388,20 @@
     margin: 0 auto 0.75rem;
     display: block;
   }
+
+  /* ── SMALL SCREENS ── */
+  img { max-width: 100%; }
+  .contact-note { margin-left: 1rem; font-size: 0.85rem; color: var(--mid-text); overflow-wrap: anywhere; }
+  @media (max-width: 600px) {
+    .hero { padding: 3rem 1.25rem; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.14em; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-ctas .btn { width: 100%; max-width: 320px; text-align: center; }
+    .section { padding: 3rem 1.25rem; }
+    .contact-note { display: block; margin: 0.75rem 0 0; }
+    .about-callout { padding: 1.5rem; }
+    .benefit-bar h2 { font-size: 1.7rem; }
+  }
 </style>
 </head>
 <body>
@@ -357,7 +409,8 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">⚙️ BLAZEMARK</a>
-  <ul>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+  <ul id="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#services">Services</a></li>
@@ -481,7 +534,7 @@
     </ul>
     <div style="margin-top:2rem;">
       <a href="mailto:hello@blazemarkconsulting.com" class="btn btn-primary">Request a Quote</a>
-      <span style="margin-left:1rem; font-size:0.85rem; color:var(--mid-text);">Or schedule a call: <strong>hello@blazemarkconsulting.com</strong></span>
+      <span class="contact-note">Or schedule a call: <strong>hello@blazemarkconsulting.com</strong></span>
     </div>
   </div>
 </section>
@@ -572,5 +625,21 @@
   <p style="margin-top:1rem;">© 2026 Blazemark Technology Consulting · All rights reserved</p>
 </footer>
 
+<script>
+  (function () {
+    var nav = document.querySelector('nav');
+    var btn = nav.querySelector('.nav-toggle');
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    nav.querySelectorAll('ul a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>
 </body>
 </html>
