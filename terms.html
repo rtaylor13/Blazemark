@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use | Blazemark</title>
+<meta name="description" content="The terms that govern your use of the Blazemark website.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #0A0A0A;
+    --paper:    #FAFAF8;
+    --accent:   #FF4320;
+    --grey:     #6E6E6E;
+    --line:     rgba(10,10,10,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .top-bar { height: 4px; background: var(--accent); }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,248,0.88);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  nav ul {
+    list-style: none;
+    display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;
+  }
+  nav ul a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    opacity: 0.75;
+    transition: opacity 0.15s;
+  }
+  nav ul a:hover { opacity: 1; }
+  nav ul a.nav-cta {
+    opacity: 1;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.55rem 1.1rem;
+    border-radius: 100px;
+  }
+  nav ul a.nav-cta:hover { background: var(--accent); }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: clamp(3.5rem, 8vw, 5.5rem) 2rem clamp(2rem, 5vw, 3rem);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-size: clamp(2.3rem, 5.4vw, 3.6rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+  }
+  .page-header p {
+    font-size: 1.05rem;
+    color: var(--grey);
+    margin-top: 1.1rem;
+  }
+
+  /* ── LEGAL BODY ── */
+  .legal {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem clamp(4rem, 9vw, 7rem);
+  }
+  .legal h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 2.75rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .legal h2:first-child { margin-top: 0; }
+  .legal p, .legal ul { margin-bottom: 1rem; }
+  .legal ul { padding-left: 1.4rem; }
+  .legal li { margin-bottom: 0.35rem; }
+  .legal a { color: var(--accent); }
+  .legal .table-wrap { overflow-x: auto; margin-bottom: 1rem; }
+  .legal table { width: 100%; border-collapse: collapse; font-size: 0.92rem; background: #fff; border: 1px solid var(--line); }
+  .legal th, .legal td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); }
+  .legal th { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--grey); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(250,250,248,0.55);
+    padding: 2.5rem 2rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.85rem;
+    border-top: 2px solid var(--accent);
+  }
+  footer .footer-logo { font-weight: 900; color: var(--accent); font-size: 1rem; letter-spacing: -0.02em; }
+  footer a { color: rgba(250,250,248,0.85); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  footer .footer-right { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">BLAZEMARK</a>
+  <ul>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <p class="eyebrow">Legal</p>
+  <h1>Terms of Use</h1>
+  <p>Effective date: October 20, 2026</p>
+</header>
+
+<main class="legal">
+  <h2>1. Acceptance of Terms and Eligibility</h2>
+  <p>These Terms of Use ("Terms") govern your access to and use of https://blazemark.co (the "Site"), operated by Blazemark ("Blazemark," "we," "us," or "our"). By accessing or using the Site, you agree to these Terms and to our <a href="privacy.html">Privacy Policy</a>. If you do not agree, do not use the Site.</p>
+  <p>You must be at least 18 years old and able to form a binding contract to use the Site. If you use the Site on behalf of a company or other organization, you represent that you are authorized to accept these Terms on its behalf.</p>
+
+  <h2>2. The Site and Our Services</h2>
+  <p>The Site gives general information about Blazemark's AI strategy, custom build and integration, team enablement, and ongoing support services, and offers a way to contact us. Content on the Site is for general informational purposes only. It is not technical, legal, financial, or other professional advice for your specific situation.</p>
+  <p><strong>Client engagements are governed separately.</strong> Submitting a contact form or exchanging emails does not create a client relationship. Any services we provide will be governed by a separate written agreement, such as a master services agreement, statement of work, or proposal (a "Client Agreement"). If a Client Agreement conflicts with these Terms, the Client Agreement controls.</p>
+  <p><strong>Information you submit.</strong> You agree that information you provide through the Site is accurate and that you have the right to share it. Please do not submit confidential, proprietary, or sensitive information through the contact form. Information sent before a Client Agreement or non-disclosure agreement is signed is not treated as confidential, except as described in our Privacy Policy.</p>
+
+  <h2>3. Acceptable Use</h2>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Use the Site for any unlawful, fraudulent, or harmful purpose</li>
+    <li>Submit spam, unsolicited advertising, or false or misleading information</li>
+    <li>Upload or transmit viruses, malware, or other harmful code</li>
+    <li>Attempt to gain unauthorized access to the Site, its servers, databases, or connected systems, or probe, scan, or test their vulnerabilities</li>
+    <li>Interfere with or disrupt the Site, including through excessive automated requests</li>
+    <li>Scrape, crawl, or harvest content or data from the Site by automated means without our written permission</li>
+    <li>Copy, reproduce, or use Site content to build a competing product or service</li>
+    <li>Impersonate any person or entity or misrepresent your affiliation with anyone</li>
+  </ul>
+  <p>We may investigate violations and take appropriate action, including blocking access and reporting conduct to law enforcement.</p>
+
+  <h2>4. Intellectual Property</h2>
+  <p><strong>Our content.</strong> The Site and its content are owned by Blazemark or its licensors and are protected by copyright, trademark, and other laws. This includes its text, graphics, logos, design, layout, and code. "Blazemark" and our logos are our trademarks. Other names and logos on the Site, such as those of tools we work with, belong to their respective owners and do not imply endorsement.</p>
+  <p><strong>Limited license.</strong> We grant you a limited, revocable, non-exclusive, non-transferable license to view and use the Site for your own internal business evaluation. You may not modify, distribute, sell, or create derivative works from Site content without our prior written consent.</p>
+  <p><strong>Your submissions.</strong> You keep ownership of the information you send us. You grant us permission to use it to respond to you and evaluate a potential engagement. If you send us feedback or suggestions about the Site or our services, we may use them without obligation to you.</p>
+  <p><strong>Work product.</strong> Ownership of deliverables, code, and other work product created during an engagement is set out in the applicable Client Agreement, not these Terms.</p>
+
+  <h2>5. Pricing and Third-Party Services</h2>
+  <p><strong>Pricing.</strong> Engagement models and pricing on the Site, such as hourly, fixed project, monthly retainer, and enterprise partner, are general descriptions only. They are not offers. Fees, payment terms, and scope for any engagement are set only in a signed Client Agreement or accepted proposal.</p>
+  <p><strong>Third-party links and tools.</strong> The Site may link to or mention third-party websites, products, and services, such as AI platforms, cloud providers, and automation tools. We do not control and are not responsible for third-party content, products, or practices. Your use of them is at your own risk and subject to their terms.</p>
+
+  <h2>6. Disclaimers, Limitation of Liability, and Indemnification</h2>
+  <p><strong>Disclaimer of warranties.</strong> THE SITE AND ITS CONTENT ARE PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED. THIS INCLUDES IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. We do not warrant that the Site will be uninterrupted, error-free, secure, or free of harmful components, or that its content is accurate, complete, or current. Descriptions of AI capabilities and outcomes are illustrative. Results vary by business and are not guaranteed.</p>
+  <p><strong>Limitation of liability.</strong> TO THE FULLEST EXTENT PERMITTED BY LAW, BLAZEMARK AND ITS OWNERS, EMPLOYEES, AND CONTRACTORS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES. THIS INCLUDES LOST PROFITS, REVENUE, DATA, OR GOODWILL ARISING FROM OR RELATED TO YOUR USE OF THE SITE, EVEN IF WE WERE ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. OUR TOTAL LIABILITY FOR ANY CLAIM RELATED TO THE SITE WILL NOT EXCEED ONE HUNDRED U.S. DOLLARS ($100). Some jurisdictions do not allow certain limitations, so some of the above may not apply to you.</p>
+  <p><strong>Indemnification.</strong> You agree to defend, indemnify, and hold harmless Blazemark and its owners, employees, and contractors from any claims, damages, losses, liabilities, and expenses, including reasonable attorneys' fees. This covers claims arising from your misuse of the Site, your violation of these Terms, or your violation of any law or third-party right.</p>
+
+  <h2>7. Termination, Governing Law, and Disputes</h2>
+  <p><strong>Termination.</strong> We may suspend or end your access to the Site at any time, for any reason, without notice. Sections that by their nature should survive termination will survive. These include intellectual property, disclaimers, limitation of liability, indemnification, and governing law.</p>
+  <p><strong>Governing law.</strong> These Terms are governed by the laws of the State of Texas, without regard to its conflict-of-law rules.</p>
+  <p><strong>Informal resolution first.</strong> Before filing any claim, you agree to contact us at <a href="mailto:blazemarkconsulting@gmail.com">blazemarkconsulting@gmail.com</a> and try to resolve the dispute informally for at least 30 days.</p>
+  <p><strong>Venue.</strong> Any dispute that is not resolved informally must be brought exclusively in the state or federal courts located in Nueces County, Texas. You and Blazemark consent to the personal jurisdiction of those courts. Either party may bring an individual claim in small claims court if it qualifies.</p>
+  <p><strong>Time limit.</strong> To the extent permitted by law, any claim related to the Site must be filed within one year after it arises, or it is permanently barred.</p>
+
+  <h2>8. General Terms and Contact</h2>
+  <p><strong>Changes to these Terms.</strong> We may update these Terms from time to time. We will post the updated version on the Site and change the effective date above. Your continued use of the Site after changes take effect means you accept them.</p>
+  <p><strong>Entire agreement.</strong> These Terms and our Privacy Policy are the entire agreement between you and Blazemark about the Site. Any Client Agreement separately governs services.</p>
+  <p><strong>Severability and waiver.</strong> If any provision is found unenforceable, the rest stays in effect. Our failure to enforce a provision is not a waiver of it.</p>
+  <p><strong>Assignment.</strong> You may not assign these Terms without our consent. We may assign them in connection with a merger, acquisition, or sale of assets.</p>
+  <p><strong>Contact us.</strong> For questions about these Terms, contact:</p>
+  <p>Blazemark<br>Corpus Christi, TX and Austin, TX<br><a href="mailto:blazemarkconsulting@gmail.com">blazemarkconsulting@gmail.com</a></p>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">BLAZEMARK</div>
+  <div class="footer-right">
+    <a href="mailto:blazemarkconsulting@gmail.com">blazemarkconsulting@gmail.com</a>
+    <span>Corpus Christi, TX and Austin, TX</span>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <span>© 2026 Blazemark</span>
+  </div>
+</footer>
+
+</body>
+</html>
