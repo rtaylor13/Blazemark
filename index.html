@@ -3,477 +3,636 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blazemark | AI Implementation for Small &amp; Mid-Size Businesses</title>
-<meta name="description" content="Blazemark helps small and mid-size companies put AI to work — without hiring a data science team or guessing at the build.">
+<title>The Island Chili Showdown™</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700&family=Merriweather:ital@1&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink:      #0A0A0A;
-    --paper:    #FAFAF8;
-    --accent:   #FF4320;
-    --grey:     #6E6E6E;
-    --line:     rgba(10,10,10,0.1);
+    --chili-red:    #C0392B;
+    --chili-dark:   #7B1A10;
+    --flame-orange: #E8621A;
+    --sun-yellow:   #F5C518;
+    --ocean-teal:   #1A6B72;
+    --sand:         #F7F0E3;
+    --dark-text:    #1C1C1C;
+    --mid-text:     #444;
+    --light-line:   #D9CFC0;
   }
 
   html { scroll-behavior: smooth; }
 
-  .top-bar { height: 4px; background: var(--accent); }
-
   body {
-    font-family: 'Inter', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    font-size: 17px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a { color: inherit; }
-
-  .eyebrow {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
+    font-family: 'Lato', sans-serif;
+    background: var(--sand);
+    color: var(--dark-text);
+    font-size: 16px;
+    line-height: 1.7;
   }
 
   /* ── NAV ── */
   nav {
+    background: var(--chili-dark);
     position: sticky; top: 0; z-index: 100;
-    background: rgba(250,250,248,0.88);
-    backdrop-filter: blur(10px);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 2rem;
-    border-bottom: 1px solid var(--line);
+    padding: 0 2rem;
+    height: 56px;
+    border-bottom: 3px solid var(--sun-yellow);
   }
-  .nav-logo {
-    font-size: 1.15rem;
-    font-weight: 900;
-    letter-spacing: -0.02em;
+  nav .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--sun-yellow);
+    letter-spacing: 0.08em;
     text-decoration: none;
-    color: var(--accent);
-    display: flex; align-items: center; gap: 0.4rem;
   }
   nav ul {
     list-style: none;
-    display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;
+    display: flex; gap: 1.5rem;
   }
   nav ul a {
+    color: #fff;
     text-decoration: none;
     font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--ink);
-    opacity: 0.75;
-    transition: opacity 0.15s;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.15s;
   }
-  nav ul a:hover { opacity: 1; }
-  nav ul a.nav-cta {
-    opacity: 1;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 0.55rem 1.1rem;
-    border-radius: 100px;
-  }
-  nav ul a.nav-cta:hover { background: var(--accent); }
+  nav ul a:hover { color: var(--sun-yellow); }
 
   /* ── HERO ── */
   .hero {
-    padding: clamp(4rem, 10vw, 7.5rem) 2rem clamp(3rem, 7vw, 5rem);
-    max-width: 1080px;
-    margin: 0 auto;
+    background: linear-gradient(160deg, var(--chili-dark) 0%, #2C0E07 60%, var(--ocean-teal) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 110%, rgba(232,98,26,0.35) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sun-yellow);
+    margin-bottom: 0.75rem;
+  }
+  .anniversary-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, var(--flame-orange), var(--chili-red));
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    border: 2px solid var(--sun-yellow);
+    box-shadow: 0 4px 14px rgba(232,98,26,0.45);
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
   }
   .hero h1 {
-    font-size: clamp(2.6rem, 6.4vw, 5.2rem);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1.02;
-    max-width: 920px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
   }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
+  .hero h1 span { color: var(--sun-yellow); }
   .hero-subtitle {
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    color: var(--grey);
-    max-width: 580px;
-    margin: 1.75rem 0 2.25rem;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.25rem;
+    max-width: 520px;
+    margin-left: auto; margin-right: auto;
   }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-
+  .hero-ctas {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
   .btn {
     display: inline-block;
-    padding: 0.9rem 1.9rem;
-    border-radius: 100px;
+    padding: 0.75rem 2rem;
+    border-radius: 3px;
     font-weight: 700;
-    font-size: 0.92rem;
-    text-decoration: none;
-    transition: transform 0.15s, background 0.15s, color 0.15s;
-    cursor: pointer;
-    border: 1.5px solid var(--ink);
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-primary { background: var(--ink); color: var(--paper); }
-  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
-  .btn-outline { background: transparent; color: var(--ink); }
-  .btn-outline:hover { background: var(--ink); color: var(--paper); }
-
-  /* ── FACT STRIP ── */
-  .fact-strip {
-    border-top: 2px solid var(--accent);
-    border-bottom: 1px solid var(--line);
-    padding: 1.1rem 2rem;
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--grey);
+    text-decoration: none;
+    transition: transform 0.12s, opacity 0.12s;
+    cursor: pointer;
+    border: none;
   }
+  .btn:hover { transform: translateY(-2px); opacity: 0.92; }
+  .btn-primary { background: var(--chili-red); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid var(--sun-yellow); }
+  .btn-outline:hover { background: var(--sun-yellow); color: var(--dark-text); }
+
+  /* flame row */
+  .flames {
+    display: flex; justify-content: center; gap: 0.5rem;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    opacity: 0.6;
+  }
+
+  /* ── WHEN & WHERE ── */
+  .when-where {
+    background: var(--chili-red);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .when-where-grid {
+    display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+    max-width: 720px; margin: 0 auto;
+  }
+  .ww-item { flex: 1; min-width: 200px; }
+  .ww-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sun-yellow);
+    margin-bottom: 0.25rem;
+  }
+  .ww-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+  .ww-sub { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
 
   /* ── SECTION WRAPPER ── */
-  .section { padding: clamp(4rem, 9vw, 7rem) 2rem; }
-  .inner { max-width: 1080px; margin: 0 auto; }
-  .section-head { max-width: 680px; margin-bottom: 3rem; }
-  .section-head h2 {
-    font-size: clamp(1.9rem, 4vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.08;
+  .section { padding: 4rem 1.5rem; }
+  .inner { max-width: 900px; margin: 0 auto; }
+  .section-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 0.06em;
+    color: var(--chili-dark);
+    margin-bottom: 0.25rem;
   }
-  .section-head p {
+  .section-rule {
+    width: 56px; height: 4px;
+    background: var(--flame-orange);
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+  .section-lead {
     font-size: 1.05rem;
-    color: var(--grey);
-    margin-top: 1rem;
+    color: var(--mid-text);
+    max-width: 640px;
+    margin-bottom: 2rem;
   }
-  .section-dark { background: var(--ink); color: var(--paper); }
-  .section-dark .section-head p { color: rgba(250,250,248,0.65); }
-  .section-dark .eyebrow { color: var(--accent); }
 
-  /* ── PROBLEM ── */
-  .problem-text {
+  /* ── ABOUT ── */
+  .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
+    gap: 2.5rem;
+    align-items: center;
   }
-  .problem-text h2 {
-    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.12;
+  @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-callout {
+    background: var(--chili-dark);
+    color: #fff;
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
   }
-  .problem-text p { color: var(--grey); font-size: 1.05rem; }
-  .problem-text p + p { margin-top: 1rem; }
-  @media (max-width: 760px) { .problem-text { grid-template-columns: 1fr; gap: 1.5rem; } }
-
-  /* ── SERVICES GRID ── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-  }
-  @media (max-width: 760px) { .services-grid { grid-template-columns: 1fr; } }
-  .service-card {
-    background: var(--paper);
-    padding: 2.25rem;
-    transition: background 0.15s;
-  }
-  .service-card:hover { background: #fff; }
-  .service-card .num {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
-  }
-  .service-card h3 {
-    font-size: 1.3rem;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.65rem;
-  }
-  .service-card p { color: var(--grey); font-size: 0.98rem; }
-
-  /* ── PROCESS ── */
-  .process-list { display: flex; flex-direction: column; }
-  .process-row {
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 1.5rem;
-    padding: 1.75rem 0;
-    border-top: 1px solid var(--line);
-    align-items: baseline;
-  }
-  .process-list .process-row:last-child { border-bottom: 1px solid var(--line); }
-  .process-num {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--accent);
+  .about-callout .big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: var(--sun-yellow);
     line-height: 1;
   }
-  .process-row h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
-  .process-row p { color: var(--grey); font-size: 0.98rem; max-width: 560px; }
+  .about-callout p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 0.5rem; }
 
-  /* ── ENGAGEMENT TIERS ── */
+  /* ── SCHEDULE ── */
+  .schedule-bg { background: #fff; }
+  .timeline {
+    border-left: 3px solid var(--light-line);
+    padding-left: 1.5rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .timeline-item { position: relative; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.85rem; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--flame-orange);
+    border: 2px solid #fff;
+    outline: 2px solid var(--flame-orange);
+  }
+  .t-time {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--chili-red);
+    margin-bottom: 2px;
+  }
+  .t-event { font-weight: 700; font-size: 1rem; color: var(--dark-text); }
+  .t-desc { font-size: 0.9rem; color: var(--mid-text); }
+  .live-music-note {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--ocean-teal);
+    padding: 0.15rem 0 0.15rem 0.1rem;
+    opacity: 0.9;
+  }
+  .live-music-note strong { color: var(--ocean-teal); font-style: normal; }
+
+  /* ── DONATE TIERS ── */
   .tiers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
   }
   .tier-card {
-    background: var(--paper);
-    padding: 1.75rem;
-  }
-  .tier-name { font-weight: 800; font-size: 1.05rem; margin-bottom: 0.3rem; }
-  .tier-amount { font-size: 0.9rem; color: var(--grey); }
-  .tier-card.featured { background: var(--ink); color: var(--paper); box-shadow: inset 0 3px 0 var(--accent); }
-  .tier-card.featured .tier-amount { color: rgba(250,250,248,0.65); }
-
-  /* ── TOOLS ── */
-  .tool-row {
-    display: flex; flex-wrap: wrap; gap: 0.6rem;
-    margin-top: 1.75rem;
-  }
-  .tool-pill {
-    border: 1px solid rgba(250,250,248,0.25);
-    border-radius: 100px;
-    padding: 0.55rem 1.1rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: rgba(250,250,248,0.85);
-  }
-
-  /* ── WHY BANNER ── */
-  .accent-rule {
-    width: 44px; height: 4px;
-    background: var(--accent);
-    border-radius: 2px;
-    margin: 0 auto 1.25rem;
-  }
-  .why-banner {
+    display: block;
+    border: 1.5px solid var(--light-line);
+    border-radius: 6px;
+    padding: 1.25rem;
     text-align: center;
-    padding: clamp(3rem, 7vw, 5rem) 2rem;
+    background: #fff;
+    transition: box-shadow 0.15s, transform 0.15s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
   }
-  .why-banner h2 {
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    max-width: 760px;
-    margin: 0 auto 1.1rem;
+  .tier-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .tier-card:visited { color: inherit; }
+  .tier-emoji { font-size: 2.25rem; margin-bottom: 0.5rem; }
+  .tier-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--chili-dark);
+    letter-spacing: 0.06em;
   }
-  .why-banner p { color: var(--grey); max-width: 560px; margin: 0 auto 1.75rem; }
+  .tier-amount { font-size: 0.9rem; color: var(--mid-text); }
+  .tier-card.featured {
+    border-color: var(--chili-red);
+    background: var(--chili-red);
+    color: #fff;
+  }
+  .tier-card.featured .tier-name { color: var(--sun-yellow); }
+  .tier-card.featured .tier-amount { color: rgba(255,255,255,0.85); }
 
-  /* ── FOOTER CTA ── */
-  .footer-cta {
+  /* ── COOK RULES ── */
+  .rules-list {
+    display: flex; flex-direction: column; gap: 0.75rem;
+    counter-reset: rule-counter;
+    list-style: none;
+  }
+  .rules-list li {
+    counter-increment: rule-counter;
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: #fff;
+    border-radius: 4px;
+    padding: 0.9rem 1rem;
+    border: 0.5px solid var(--light-line);
+  }
+  .rules-list li::before {
+    content: counter(rule-counter, decimal-leading-zero);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--flame-orange);
+    min-width: 32px;
+    line-height: 1.2;
+  }
+
+  /* ── SPONSORS ── */
+  .sponsors-bg { background: var(--chili-dark); color: #fff; }
+  .sponsor-grid {
+    display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .sponsor-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .sponsors-bg .section-heading { color: var(--sun-yellow); }
+  .sponsor-logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .sponsor-logo-link:hover { transform: translateY(-2px); }
+  .sponsor-logo { display: block; height: auto; max-width: 100%; }
+
+  /* ── BENEFICIARY BANNER ── */
+  .benefit-bar {
+    background: var(--ocean-teal);
+    color: #fff;
     text-align: center;
-    padding: clamp(4rem, 10vw, 7rem) 2rem;
+    padding: 2.5rem 1.5rem;
   }
-  .footer-cta h2 {
-    font-size: clamp(2.2rem, 5.5vw, 4rem);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    max-width: 760px;
-    margin: 0 auto 1.75rem;
+  .benefit-bar h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
   }
+  .benefit-bar p { font-size: 0.95rem; color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto 1.25rem; }
 
   /* ── FOOTER ── */
   footer {
-    background: var(--ink);
-    color: rgba(250,250,248,0.55);
-    padding: 2.5rem 2rem;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-    font-size: 0.85rem;
-    border-top: 2px solid var(--accent);
+    background: #111;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.82rem;
   }
-  footer .footer-logo { font-weight: 900; color: var(--accent); font-size: 1rem; letter-spacing: -0.02em; }
-  footer .footer-logo .dot { color: var(--accent); }
-  footer a { color: rgba(250,250,248,0.85); text-decoration: none; }
-  footer a:hover { color: var(--accent); }
-  footer .footer-right { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  footer a { color: var(--sun-yellow); text-decoration: none; }
+  footer .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
 </style>
 </head>
 <body>
 
-<div class="top-bar"></div>
-
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">BLAZEMARK</a>
+  <a href="#" class="nav-logo">🌶 Island Chili Showdown™</a>
   <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#register">Register</a></li>
+    <li><a href="#vendor">Vendors</a></li>
+    <li><a href="#donate">Donate</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <p class="eyebrow">AI Implementation Partner</p>
-  <h1>AI that works for businesses <em>without</em> an AI team.</h1>
-  <p class="hero-subtitle">Blazemark helps small and mid-size companies put AI to work — without hiring a data science team or betting the business on a trend. We handle strategy, build, and integration end to end.</p>
+  <div class="anniversary-badge">🔥 3rd Annual</div>
+  <p class="hero-eyebrow">Corpus Christi, Texas · Padre Island</p>
+  <h1>The Island<br><span>Chili</span><br>Showdown<span style="font-size:0.55em;">™</span></h1>
+  <p class="hero-subtitle">Eating chili, saving turtles — come cook, compete, and support the Texas Sealife Center.</p>
   <div class="hero-ctas">
-    <a href="contact.html" class="btn btn-primary">Start a Project</a>
-    <a href="#services" class="btn btn-outline">See How We Help</a>
+    <a href="contact.html" class="btn btn-primary">Register a Team</a>
+    <a href="#donate" class="btn btn-outline">Donate Now</a>
   </div>
+  <div class="flames">🌶 ❤️ 🐢 ❤️ 🌶</div>
 </section>
 
-<div class="fact-strip">Founded 2020 · Based in Austin, TX · Remote-first, serving clients nationwide</div>
+<!-- WHEN & WHERE -->
+<div class="when-where">
+  <div class="when-where-grid">
+    <div class="ww-item">
+      <div class="ww-label">Date</div>
+      <div class="ww-value">November 14th, 2026</div>
+      <div class="ww-sub">11:00 AM – 3:00 PM</div>
+    </div>
+    <div class="ww-item">
+      <div class="ww-label">Location</div>
+      <div class="ww-value">Texas Sealife Center</div>
+      <div class="ww-sub">14220 S. Padre Island Dr, Corpus Christi, TX 78418</div>
+    </div>
+    <div class="ww-item">
+      <div class="ww-label">What to expect</div>
+      <div class="ww-value">Chili. Competition. Community.</div>
+      <div class="ww-sub">In the parking lot next to the Sealife Center</div>
+    </div>
+  </div>
+</div>
 
-<!-- PROBLEM -->
+<!-- ABOUT -->
 <section class="section" id="about">
-  <div class="inner problem-text">
-    <h2>ChatGPT in a few browser tabs isn't an AI strategy.</h2>
-    <div>
-      <p>Most small and mid-size teams know AI could help — they just don't have the time, budget, or in-house expertise to actually implement it. Off-the-shelf tools only go so far, and hiring a full AI team isn't realistic for most businesses.</p>
-      <p>That's the gap Blazemark fills. We bring senior engineers who design, build, and integrate AI into how your business already runs — so you get the result without the overhead.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="section" id="services">
   <div class="inner">
-    <div class="section-head">
-      <p class="eyebrow">How We Help</p>
-      <h2>Four ways we put AI to work for you.</h2>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="num">01</div>
-        <h3>Strategy &amp; Readiness</h3>
-        <p>Find where AI actually saves you time and money before you spend a dollar building it.</p>
+    <div class="about-grid">
+      <div>
+        <p class="section-heading">About the Showdown</p>
+        <div class="section-rule"></div>
+        <p class="section-lead">
+          The Island Chili Showdown is an annual cook-off and community fundraiser held on Padre Island in Corpus Christi, Texas. Teams compete for glory, bragging rights, and the love of great chili — all while raising critical funds for the Texas Sealife Center.
+        </p>
+        <p style="color:var(--mid-text); font-size:0.95rem;">
+          The Texas Sealife Center is a nonprofit dedicated to the rescue, rehabilitation, and release of coastal and aquatic wildlife in South Texas — including endangered sea turtles. Every bowl you taste and every dollar you donate helps more animals make it back to the ocean.
+        </p>
       </div>
-      <div class="service-card">
-        <div class="num">02</div>
-        <h3>Custom Build &amp; Integration</h3>
-        <p>We design and build AI tools and automations that plug into the systems you already use.</p>
-      </div>
-      <div class="service-card">
-        <div class="num">03</div>
-        <h3>Team Enablement</h3>
-        <p>We train your team to use and maintain what we build, so you're not stuck depending on us.</p>
-      </div>
-      <div class="service-card">
-        <div class="num">04</div>
-        <h3>Ongoing Support</h3>
-        <p>Monitoring, iteration, and scaling as your needs grow — month to month, no long contracts.</p>
+      <div class="about-callout">
+        <div class="big-num">🌶</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:rgba(255,255,255,0.75); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4rem;">Free Admission</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--sun-yellow); letter-spacing:0.05em;">Only $5 for a Chili Tasting Kit</div>
+        <p>This kit allows you to taste all chili cook team chili's. Most forms of payment accepted at the gate. Cash, Card, Venmo, Cash App, so on.</p>
+        <p style="margin-top:1rem;">100% of proceeds benefit the Texas Sealife Center's wildlife rescue operations on the Gulf Coast.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="section" id="process" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+<!-- SCHEDULE -->
+<section class="section schedule-bg" id="schedule">
   <div class="inner">
-    <div class="section-head">
-      <p class="eyebrow">Our Process</p>
-      <h2>From first conversation to something that runs.</h2>
-    </div>
-    <div class="process-list">
-      <div class="process-row">
-        <div class="process-num">01</div>
-        <div><h3>Discover</h3><p>We map your workflows and find where AI creates real leverage — not just where it sounds impressive.</p></div>
+    <p class="section-heading">Schedule of Events</p>
+    <div class="section-rule"></div>
+    <p class="section-lead">Here's what the day looks like. Come early, stay late, eat lots of chili.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="t-time">7:00 AM</div>
+        <div class="t-event">Cook Team Arrival, Set Up, &amp; Start Cooking</div>
+        <div class="t-desc">Teams arrive, pick their spot in the lot, and get their equipment fired up.</div>
       </div>
-      <div class="process-row">
-        <div class="process-num">02</div>
-        <div><h3>Build</h3><p>We design and build the solution for your actual business — not a generic chatbot bolted onto your site.</p></div>
+      <div class="timeline-item">
+        <div class="t-time">9:00 AM</div>
+        <div class="t-event">Chili Team Captain Meeting</div>
+        <div class="t-desc">Team Captains meet with event coordinators for rules and Q&A </div>
       </div>
-      <div class="process-row">
-        <div class="process-num">03</div>
-        <div><h3>Integrate</h3><p>We connect it to the tools, data, and workflows your team already uses every day.</p></div>
+      <div class="timeline-item">
+        <div class="t-time">9:00 AM</div>
+        <div class="t-event">Vendor Tent Set Up</div>
+        <div class="t-desc">Vendors arrive, pick their spot in the lot, and get their booths set up.</div>
       </div>
-      <div class="process-row">
-        <div class="process-num">04</div>
-        <div><h3>Support</h3><p>We stay on to monitor, refine, and scale what works as your business grows.</p></div>
+      <div class="timeline-item">
+        <div class="t-time">11:00 AM</div>
+        <div class="t-event">Gates Open to the Public</div>
+        <div class="t-desc">Tasters, supporters, and families are welcome. Donations encouraged at the gate.</div>
+      </div>
+      <div class="live-music-note">🎶 Live music performed by <strong>Joe Ruelas</strong>!</div>
+      <div class="timeline-item">
+        <div class="t-time">12:30 PM</div>
+        <div class="t-event">Chili Turn In</div>
+        <div class="t-desc">Teams submit their chili in an official event provided cup.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">1:00 - 2:00 PM</div>
+        <div class="t-event">Judging Begins</div>
+        <div class="t-desc">Official judges make the rounds. Score sheets cover flavor, heat, consistency, and creativity.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">2:30 PM</div>
+        <div class="t-event">Awards Ceremony</div>
+        <div class="t-desc">Winners announced! Trophies, bragging rights, and a whole lot of chili glory.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">3:00 PM</div>
+        <div class="t-event">Event Closes</div>
+        <div class="t-desc">Thanks for coming. See you next year — same island, more chili.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ENGAGEMENT MODELS / PRICING -->
-<section class="section" id="pricing">
+<!-- REGISTER -->
+<section class="section" id="register">
   <div class="inner">
-    <div class="section-head">
-      <p class="eyebrow">Engagement Models</p>
-      <h2>Pick the model that fits how your team works.</h2>
+    <p class="section-heading">Register a Cook Team</p>
+    <div class="section-rule"></div>
+    <p class="section-lead">Entry fee is <strong>$50 per team</strong> (up to 4 people). All fees go directly to the Texas Sealife Center.</p>
+    <ul class="rules-list">
+      <li>Teams may have up to 4 members. Only one entry per team.</li>
+      <li>All chili must be prepared on-site on the day of the event — no pre-cooking.</li>
+      <li>Each team is responsible for their own equipment, fuel, ingredients, and setup.</li>
+      <li>Chili recipes can be any style: Texas Red, verde, white, vegetarian — get creative.</li>
+      <li>A minimum of one quart of chili must be available for judging and public tasting.</li>
+      <li>Teams must keep their area clean and follow all venue safety guidelines.</li>
+      <li>Team names must be family-friendly (this is a community and wildlife event!).</li>
+    </ul>
+    <div style="margin-top:2rem;">
+      <a href="contact.html" class="btn btn-primary">Register Now</a>
+      <span style="margin-left:1rem; font-size:0.85rem; color:var(--mid-text);">Or use PayPal: <strong>@islandchilishowdown</strong></span>
     </div>
+  </div>
+</section>
+
+<!-- VENDOR ENTRY -->
+<section class="section schedule-bg" id="vendor">
+  <div class="inner">
+    <p class="section-heading">Vendor Entry</p>
+    <div class="section-rule"></div>
+    <p class="section-lead">Vendor entry is <strong>$100</strong> and includes a <strong>10x10ft tent space</strong>. Please note the space is <strong>outdoors</strong> and <strong>no power is provided</strong> — bring your own generator or battery power if needed.</p>
+    <ul class="rules-list">
+      <li>Vendor space is 10x10ft, outdoors, on unpaved/grass or gravel ground.</li>
+      <li>No electrical power is provided — vendors must supply their own power source if needed.</li>
+      <li>Vendors are responsible for their own tent, tables, chairs, and display setup.</li>
+      <li>Vendors must arrive and be fully set up prior to the event start time.</li>
+      <li>Vendors are responsible for keeping their space clean and removing all trash and materials at the end of the event.</li>
+    </ul>
+    <div style="margin-top:2rem;">
+      <a href="mailto:theislandchilishowdown@gmail.com" class="btn btn-primary">Reserve Your Space via Email</a>
+      <span style="margin-left:1rem; font-size:0.85rem; color:var(--mid-text);">Or use PayPal: <strong>@islandchilishowdown</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section class="section" id="donate">
+  <div class="inner">
+    <p class="section-heading">Donate Here</p>
+    <div class="section-rule"></div>
+    <p class="section-lead">Not cooking? You can still make a difference. Choose the sea turtle that matches your generosity.</p>
     <div class="tiers-grid">
-      <div class="tier-card">
-        <div class="tier-name">Hourly</div>
-        <div class="tier-amount">Variable</div>
-      </div>
-      <div class="tier-card">
-        <div class="tier-name">Fixed Project</div>
-        <div class="tier-amount">Custom quote</div>
-      </div>
-      <div class="tier-card">
-        <div class="tier-name">Monthly Retainer</div>
-        <div class="tier-amount">We'll fit your budget</div>
-      </div>
-      <div class="tier-card featured">
-        <div class="tier-name">Enterprise Partner</div>
-        <div class="tier-amount">Let's talk</div>
-      </div>
+      <a class="tier-card" href="https://paypal.me/islandchilishowdown/10" target="_blank" rel="noopener">
+        <div class="tier-emoji">🐢</div>
+        <div class="tier-name">Kemps Ridley</div>
+        <div class="tier-amount">$10</div>
+      </a>
+      <a class="tier-card" href="https://paypal.me/islandchilishowdown/200" target="_blank" rel="noopener">
+        <div class="tier-emoji">🐢</div>
+        <div class="tier-name">Loggerhead</div>
+        <div class="tier-amount">$200</div>
+      </a>
+      <a class="tier-card" href="https://paypal.me/islandchilishowdown/300" target="_blank" rel="noopener">
+        <div class="tier-emoji">🐢</div>
+        <div class="tier-name">Green</div>
+        <div class="tier-amount">$300</div>
+      </a>
+      <a class="tier-card featured" href="https://paypal.me/islandchilishowdown/500" target="_blank" rel="noopener">
+        <div class="tier-emoji">🐢</div>
+        <div class="tier-name">Leatherback</div>
+        <div class="tier-amount">$500</div>
+      </a>
     </div>
-    <p style="margin-top:1.5rem; font-size:0.92rem; color:var(--grey);">Every engagement includes weekly progress reports and direct access to the engineers on your project.</p>
-  </div>
-</section>
-
-<!-- TOOLS -->
-<section class="section section-dark" id="tech">
-  <div class="inner">
-    <div class="section-head">
-      <p class="eyebrow">Tools We Work With</p>
-      <h2>We pick the right tool for the job, not the trendiest one.</h2>
-    </div>
-    <div class="tool-row">
-      <div class="tool-pill">OpenAI &amp; Anthropic</div>
-      <div class="tool-pill">LangChain</div>
-      <div class="tool-pill">Python &amp; Node.js</div>
-      <div class="tool-pill">React &amp; TypeScript</div>
-      <div class="tool-pill">AWS, Azure &amp; GCP</div>
-      <div class="tool-pill">Vector Databases</div>
-      <div class="tool-pill">Zapier &amp; Make</div>
-      <div class="tool-pill">PostgreSQL</div>
-      <div class="tool-pill">And much more</div>
+    <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--mid-text);">
+      Be a Leatherback and receive website recognition and a space for your banner at the event. You must provide your banner 3 days before the event.
+    </p>
+    <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--mid-text);">
+      Vendor donations: minimum $100. Send donations directly via PayPal to <strong>@islandchilishowdown</strong>.<br>
+      Partner: <strong>4TunaEstates</strong>.
+    </p>
+    <div style="margin-top:1.25rem;">
+      <a href="https://paypal.me/islandchilishowdown" class="btn btn-primary" target="_blank" rel="noopener">Donate via PayPal</a>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
-<section class="why-banner">
-  <div class="accent-rule"></div>
-  <h2>Senior engineers. No black box. No hype.</h2>
-  <p>Every engagement is staffed by senior developers — no junior hand-offs, no vendor lock-in. We measure success by what runs reliably in your business, not what looks good in a demo.</p>
+<!-- SPONSORS -->
+<section class="section sponsors-bg" id="sponsors">
+  <div class="inner" style="text-align:center;">
+    <p class="section-heading">Our Sponsors</p>
+    <div class="section-rule" style="margin-left:auto;margin-right:auto;"></div>
+    <p style="color:rgba(255,255,255,0.75); margin-bottom:0.5rem;">We couldn't do this without the generous support of our community sponsors.</p>
+    <div class="sponsor-grid">
+      <a href="https://www.facebook.com/4tunaestates/" target="_blank" rel="noopener" class="sponsor-logo-link">
+        <img src="4TunaLogo300w.png" alt="4Tuna Estates" class="sponsor-logo" width="300" height="300">
+      </a>
+      <a href="https://www.texassealifecenter.org" target="_blank" rel="noopener" class="sponsor-logo-link">
+        <img src="texas-sealife-center.png" alt="Texas Sealife Center" class="sponsor-logo" width="300" height="302">
+      </a>
+      <a href="https://www.facebook.com/groups/326756378218879/" target="_blank" rel="noopener" class="sponsor-logo-link">
+        <img src="piph.png" alt="Padre Island Parrot Heads" class="sponsor-logo">
+      </a>
+      <a href="https://beachballbrewing.com/" target="_blank" rel="noopener" class="sponsor-logo-link">
+        <img src="beach_ball.png" alt="Beach Ball Brewing" class="sponsor-logo" width="300" height="388">
+      </a>
+      <a href="https://blazemark.co" target="_blank" rel="noopener" class="sponsor-logo-link">
+        <img src="Blazemark_Logo_400w.png" alt="Blazemark Technology Consulting" class="sponsor-logo" width="400" height="125">
+      </a>
+    </div>
+    <p style="margin-top:2rem; font-size:1.0875rem; color:rgba(255,255,255,0.55);">
+      To become a sponsor, please email us at <a href="mailto:theislandchilishowdown.com" style="color:var(--sun-yellow);">theislandchilishowdown.com</a> or call (714) 858-0526 or (210) 260-2317.
+    </p>
+  </div>
 </section>
 
-<!-- FOOTER CTA -->
-<section class="footer-cta">
-  <div class="accent-rule"></div>
-  <h2>Ready to put AI to work in your business?</h2>
-</section>
+<!-- BENEFICIARY BANNER -->
+<div class="benefit-bar">
+  <h2>🐢 Benefiting the Texas Sealife Center</h2>
+  <p>A nonprofit 501(c)3 dedicated to the rescue, rehabilitation, and release of coastal and aquatic wildlife in South Texas.</p>
+  <a href="https://www.texassealifecenter.org" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:0.85rem;">Visit Texas Sealife Center ↗</a>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">BLAZEMARK</div>
-  <div class="footer-right">
-    <a href="mailto:blazemarkconsulting@gmail.com">blazemarkconsulting@gmail.com</a>
-    <span>Austin, TX</span>
-    <span>© 2026 Blazemark</span>
-  </div>
+  <div class="footer-logo">The Island Chili Showdown™</div>
+  <p>14220 S. Padre Island Dr, Corpus Christi, TX 78418</p>
+  <p style="margin-top:0.5rem;">
+    <a href="mailto:theislandchilishowdown@gmail.com">theislandchilishowdown@gmail.com</a>
+    &nbsp;·&nbsp;
+    PayPal: <a href="#">@islandchilishowdown</a>
+  </p>
+  <p style="margin-top:1rem;">© 2026 The Island Chili Showdown™ · All rights reserved</p>
 </footer>
 
 </body>
